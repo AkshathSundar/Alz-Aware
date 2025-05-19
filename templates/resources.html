@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resources</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #e3f2fd;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #1565c0;
+      margin-bottom: 30px;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .resource-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .resource-card a {
+      text-decoration: none;
+      color: #0d47a1;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    .resource-card a:hover {
+      text-decoration: underline;
+    }
+
+    .back-button {
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #0d47a1;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Resources to Improve Your Speech</h1>
+
+  <div class="resource-list">
+    <div class="resource-card">
+      <a href="https://www.alz.org/alzheimers-dementia/what-is-alzheimers" target="_blank">
+        Alzheimer's Association - What is Alzheimer's?
+      </a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.speechandlanguagekids.com/" target="_blank">
+        Speech and Language Kids - Exercises
+      </a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.asha.org/public/speech/development/" target="_blank">
+        American Speech-Language-Hearing Association
+      </a>
+    </div>
+  </div>
+
+  <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+</body>
+</html>

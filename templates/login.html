@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://st2.depositphotos.com/3228285/9033/i/450/depositphotos_90339092-stock-photo-brain-activity-concept.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 40px 50px;
+      width: 360px;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-container h2 {
+      margin-bottom: 24px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 18px;
+      margin: 12px 0 24px 0;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transition: background 0.3s ease;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      color: #ddd;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 8px #719ECE;
+      color: #000;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.4s ease;
+      box-shadow: 0 4px 15px rgba(252, 0, 255, 0.4);
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
+      box-shadow: 0 6px 20px rgba(0, 219, 222, 0.6);
+    }
+
+    .login-footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .login-footer a {
+      color: #fc00ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .login-footer a:hover {
+      color: #00dbde;
+    }
+
+    @media (max-width: 400px) {
+      .login-container {
+        width: 90%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Welcome Back</h2>
+    <form method="POST" action="/login">
+      <input type="text" name="username" placeholder="Username" required autocomplete="username" />
+      <input type="password" name="password" placeholder="Password" required autocomplete="current-password" />
+      <button type="submit">Log In</button>
+    </form>
+    <div class="login-footer">
+    
+    </div>
+  </div>
+</body>
+</html>
