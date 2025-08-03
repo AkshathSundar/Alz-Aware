@@ -13,6 +13,7 @@ app.secret_key = 'supersecretkey123'
 def ask_bot():
     user_msg = request.json.get('message', '').lower()
 
+    #rule-based simple and straight-forward chat bot as last resort
     if any(word in user_msg for word in ['score', 'percent', 'result']):
         reply = (
             "Your Alzheimer's score estimates potential symptoms based on speech errors. "
@@ -153,6 +154,7 @@ def analyze_audio():
 
         return jsonify(result)
 
+    #alternate option
     except sr.UnknownValueError:
         return jsonify({'error': 'Could not understand audio'}), 400
     except sr.RequestError as e:
