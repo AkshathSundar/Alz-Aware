@@ -19,41 +19,71 @@
       justify-content: center;
       align-items: center;
       color: #fff;
+      overflow: hidden;
     }
 
+    /* Dark overlay */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 0;
+    }
+
+    /* Animated glowing particles */
+    body::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,219,222,0.15) 10%, transparent 70%) 0 0,
+                  radial-gradient(circle, rgba(252,0,255,0.15) 10%, transparent 70%) 50% 50%;
+      background-size: 200px 200px;
+      animation: moveGlow 12s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveGlow {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-200px, -200px); }
     }
 
     .login-container {
       position: relative;
       z-index: 1;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      padding: 40px 50px;
-      width: 360px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 50px 40px;
+      width: 370px;
       text-align: center;
-      animation: fadeIn 1s ease forwards;
+      animation: fadeIn 1.2s ease forwards;
+      box-shadow: 0 0 30px rgba(0, 219, 222, 0.3), 0 0 60px rgba(252, 0, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(25px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .login-container h2 {
-      margin-bottom: 24px;
-      font-weight: 700;
-      font-size: 28px;
+      margin-bottom: 28px;
+      font-weight: 800;
+      font-size: 30px;
+      background: linear-gradient(90deg, #00dbde, #fc00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
       letter-spacing: 2px;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #00dbde, 0 0 20px #00dbde; }
+      to { text-shadow: 0 0 10px #fc00ff, 0 0 20px #fc00ff; }
     }
 
     input[type="text"],
@@ -65,64 +95,80 @@
       border-radius: 12px;
       outline: none;
       font-size: 16px;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.15);
       color: #fff;
-      transition: background 0.3s ease;
-      box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
     }
 
     input[type="text"]::placeholder,
     input[type="password"]::placeholder {
-      color: #ddd;
+      color: #bbb;
     }
 
     input[type="text"]:focus,
     input[type="password"]:focus {
-      background: rgba(255, 255, 255, 0.45);
-      box-shadow: 0 0 8px #719ECE;
-      color: #000;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 12px #00dbde, 0 0 18px #fc00ff;
+      color: #fff;
     }
 
     button {
       width: 100%;
-      padding: 14px 18px;
+      padding: 15px 18px;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       background: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
       color: white;
       font-size: 18px;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.4s ease;
-      box-shadow: 0 4px 15px rgba(252, 0, 255, 0.4);
+      transition: all 0.4s ease;
+      box-shadow: 0 0 15px rgba(252, 0, 255, 0.4), 0 0 25px rgba(0, 219, 222, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.25);
+      transition: left 0.4s;
+    }
+
+    button:hover::after {
+      left: 100%;
     }
 
     button:hover {
-      background: linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
-      box-shadow: 0 6px 20px rgba(0, 219, 222, 0.6);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 219, 222, 0.6), 0 0 35px rgba(252, 0, 255, 0.6);
     }
 
     .login-footer {
-      margin-top: 20px;
+      margin-top: 22px;
       font-size: 14px;
-      color: #ccc;
+      color: #ddd;
     }
 
     .login-footer a {
-      color: #fc00ff;
+      color: #00dbde;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
     }
 
     .login-footer a:hover {
-      color: #00dbde;
+      color: #fc00ff;
+      text-shadow: 0 0 8px #fc00ff;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 420px) {
       .login-container {
         width: 90%;
-        padding: 30px 20px;
+        padding: 40px 20px;
       }
     }
   </style>
@@ -136,7 +182,7 @@
       <button type="submit">Log In</button>
     </form>
     <div class="login-footer">
-    
+      <p>Forgot your password? <a href="#">Reset it</a></p>
     </div>
   </div>
 </body>
